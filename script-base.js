@@ -8,8 +8,8 @@ var Generator = module.exports = function Generator() {
 	yeoman.generators.NamedBase.apply(this, arguments);
 
 	// Add capitalize mixin
-    this._.mixin({ 'capitalize': generalUtils.capitalize });
-    this._.mixin({ 'capitalizeFile': generalUtils.capitalizeFile });
+  this._.mixin({ 'capitalize': generalUtils.capitalize });
+  this._.mixin({ 'capitalizeFile': generalUtils.capitalizeFile });
 	this._.mixin({ 'capitalizeClass': generalUtils.capitalizeClass });
 	this._.mixin({ 'lowercase': generalUtils.lowercase });
 
@@ -18,11 +18,15 @@ var Generator = module.exports = function Generator() {
 	this.appname = this._.slugify(this._.humanize(this.appname));
 	this.scriptAppName = this._.camelize(this._.capitalize(this.appname)) + generalUtils.appName(this);
 	this.classedFileName = this._.capitalizeFile(this.name);
-    this.classedName = this._.capitalizeClass(this.name);
-    this.stylesLanguage = this.config.get('styles-language');
+  this.classedName = this._.capitalizeClass(this.name);
+  this.stylesLanguage = this.config.get('styles-language');
 
 	if (typeof this.options.appPath === 'undefined') {
 		this.options.appPath = this.options.appPath || 'src/scripts';
+	}
+
+	if (typeof this.options.htmlPath === 'undefined') {
+		this.options.htmlPath = this.options.htmlPath || 'src/';
 	}
 
 	if (typeof this.options.testPath === 'undefined') {
@@ -84,7 +88,7 @@ Generator.prototype.stylesTemplate = function (src, dest) {
 Generator.prototype.htmlTemplate = function (src, dest) {
 	yeoman.generators.Base.prototype.template.apply(this, [
 		src,
-		path.join(this.options.appPath, dest.toLowerCase())
+		path.join(this.options.htmlPath, dest.toLowerCase())
 	]);
 };
 

@@ -16,9 +16,14 @@ var ReactWebpackGenerator = module.exports = function ReactWebpackGenerator(args
   args = ['main'];
 
   if (typeof this.options.appPath === 'undefined') {
-    this.options.appPath = this.options.appPath || 'src/';
+    this.options.appPath = this.options.appPath || 'src/scripts';
   }
 
+  if (typeof this.options.htmlPath === 'undefined') {
+    this.options.htmlPath = this.options.htmlPath || 'src/';
+  }
+
+  this.htmlPath = this.options.htmlPath;
   this.appPath = this.options.appPath;
 
   this.composeWith('react-webpack:common', {
@@ -91,7 +96,7 @@ ReactWebpackGenerator.prototype.readIndex = function readIndex() {
 
 ReactWebpackGenerator.prototype.createIndexHtml = function createIndexHtml() {
   this.indexFile = this.indexFile.replace(/&apos;/g, "'");
-  this.write(path.join(this.appPath, 'index.html'), this.indexFile);
+  this.write(path.join(this.htmlPath, 'index.html'), this.indexFile);
 };
 
 ReactWebpackGenerator.prototype.packageFiles = function () {
