@@ -14,6 +14,11 @@ module.exports = function (config) {
     webpack: {
       cache: true,
       module: {
+        preLoaders: [{
+          test: /\.js(x)?$/,
+          exclude: /node_modules/,
+          loader: 'jsxhint?babel'
+        }],
         loaders: [{
           test: /\.gif/,
           loader: 'url-loader?limit=10000&mimetype=image/gif'
@@ -25,7 +30,7 @@ module.exports = function (config) {
           loader: 'url-loader?limit=10000&mimetype=image/png'
         }, {
           test: /\.js(x)?$/,
-          loader: 'babel!jsx-loader?harmony'
+          loader: 'babel'
         },<% if (stylesLanguage === 'sass') { %> {
           test: /\.sass/,
           loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
@@ -45,8 +50,8 @@ module.exports = function (config) {
       },
       resolve: {
         alias: {
-          'styles': './src/styles',
-          'components': './src/scripts/components/'
+          'styles': '../../../src/styles',
+          'components': '../../../src/scripts/components/'
         }
       }
     },

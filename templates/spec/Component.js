@@ -1,7 +1,8 @@
 'use strict';
 
+import React from 'react/addons';
+
 describe('<%= classedName %>', function () {
-  import React from 'react/addons';
   let <%= classedName %>, component;
 
   beforeEach(function () {

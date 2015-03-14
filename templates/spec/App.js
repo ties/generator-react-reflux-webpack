@@ -1,8 +1,8 @@
 'use strict';
 
-describe('<%= classedName %>', function () {
-  import React from 'react/addons';
+import React from 'react/addons';
 
+describe('<%= classedName %>', function () {
   let <%= scriptAppName %>, component;
 
   beforeEach(function () {
