@@ -1,15 +1,16 @@
 'use strict';
 
-var React = require('react/addons');
-var ReactTransitionGroup = React.addons.TransitionGroup;
+import React from 'react/addons';
+
+const ReactTransitionGroup = React.addons.TransitionGroup;
 
 // CSS
 require('../../styles/normalize.css');
 require('../../styles/main.css');
 
-var imageURL = require('../../images/yeoman.png');
+const imageURL = require('../../images/yeoman.png');
 
-var <%= scriptAppName %> = React.createClass({
+const <%= scriptAppName %> = React.createClass({
   render: function() {
     return (
       <div className='main'>
@@ -23,4 +24,4 @@ var <%= scriptAppName %> = React.createClass({
 <% if (!reactRouter) {
 %>React.render(<<%= scriptAppName %> />, document.getElementById('content')); // jshint ignore:line
 <% } %>
-module.exports = <%= scriptAppName %>;
+export default <%= scriptAppName %>;

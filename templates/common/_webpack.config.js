@@ -16,7 +16,8 @@ module.exports = {
 
   cache: true,
   debug: true,
-  devtool: false,
+  // Sourcemaps are enabled. If this is too slow, set it to false.
+  devtool: "eval-source-map",
   entry: [
       'webpack/hot/only-dev-server',
       './src/scripts/components/<% if (reactRouter) { %>main<% } else { %><%= scriptAppName %><% } %>.js'
@@ -28,7 +29,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       'styles': '../../../src/styles',
       'components': '../../../src/scripts/components/'
@@ -36,14 +37,14 @@ module.exports = {
   },
   module: {
     preLoaders: [{
-      test: /\.js$/,
+      test: /\.js(x)?$/,
       exclude: /node_modules/,
-      loader: 'jsxhint'
+      loader: 'jsxhint?babel'
     }],
     loaders: [{
-      test: /\.js$/,
+      test: /\.js(x)?$/,
       exclude: /node_modules/,
-      loader: 'react-hot!<% if (es6) { %>babel!<% }%>jsx-loader?harmony'
+      loader: 'react-hot!babel'
     },<% if (stylesLanguage === 'sass') { %> {
       test: /\.sass/,
       loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
@@ -62,7 +63,12 @@ module.exports = {
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url-loader?limit=8192'
-    }]
+    },
+    { test: /\.woff$/,   loader: "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff" },
+    { test: /\.ttf$/,    loader: "file-loader" },
+    { test: /\.eot$/,    loader: "file-loader" },
+    { test: /\.svg$/,    loader: "file-loader" }
+    ]
   },
 
   plugins: [

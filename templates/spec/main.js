@@ -1,7 +1,7 @@
 'use strict';
 
 describe('main', function () {
-  var main, component;
+  let main, component;
 
   beforeEach(function () {
     main = require('components/main.jsx');

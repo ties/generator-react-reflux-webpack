@@ -1,11 +1,12 @@
 'use strict';
 
 describe('<%= classedName %>', function () {
-  var React = require('react/addons');
-  var <%= scriptAppName %>, component;
+  import React from 'react/addons';
+
+  let <%= scriptAppName %>, component;
 
   beforeEach(function () {
-    var container = document.createElement('div');
+    const container = document.createElement('div');
     container.id = 'content';
     document.body.appendChild(container);
 

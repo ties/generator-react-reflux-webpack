@@ -1,13 +1,14 @@
 'use strict';
 
-var <%= scriptAppName %> = require('./<%= scriptAppName %>');
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
+import <%= scriptAppName %> from './<%= scriptAppName %>';
+import React from 'react';
+import Router from 'react-router';
 
-var content = document.getElementById('content');
+const Route = Router.Route;
 
-var Routes = (
+const content = document.getElementById('content');
+
+const Routes = (
   <Route handler={<%= scriptAppName %>}>
     <Route name="/" handler={<%= scriptAppName %>}/>
   </Route>

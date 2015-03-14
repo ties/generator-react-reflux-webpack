@@ -1,8 +1,8 @@
 'use strict';
 
 describe('<%= classedName %>', function () {
-  var React = require('react/addons');
-  var <%= classedName %>, component;
+  import React from 'react/addons';
+  let <%= classedName %>, component;
 
   beforeEach(function () {
     <%= classedName %> = require('components/<%= classedFileName %>.js');

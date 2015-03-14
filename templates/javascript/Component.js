@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react/addons');
+import React from 'react/addons';
 
 <% if (stylesLanguage === 'css') { %>require('styles/<%= classedFileName %>.css');<% } %><%
 if (stylesLanguage === 'sass')   { %>require('styles/<%= classedFileName %>.sass');<% } %><%
@@ -11,13 +11,11 @@ if (stylesLanguage === 'stylus') { %>require('styles/<%= classedFileName %>.styl
 var <%= classedName %> = React.createClass({
   render: function () {
     return (
-        <div>
+        <div className="<%= classedName %>">
           <p>Content for <%= classedName %></p>
         </div>
       );
   }
 });
 
-<% if (es6) { %>export default <%= classedName %>; <% }
-else { %>module.exports = <%= classedName %>; <% } %>
-
+export default <%= classedName %>;
