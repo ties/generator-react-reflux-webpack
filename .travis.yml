@@ -3,4 +3,4 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-react-refluxjs-webpack' ]; then cd .. && eval "mv $currentfolder generator-react-reactjs-webpack" && cd generator-react-refluxjs-webpack; fi
+  - if [ "$currentfolder" != 'generator-react-reflux-webpack' ]; then cd .. && eval "mv $currentfolder generator-react-react-webpack" && cd generator-react-reflux-webpack; fi
