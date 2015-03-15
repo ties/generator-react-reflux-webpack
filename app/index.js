@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var generalUtils = require('../util.js');
 
-var ReactWebpackGenerator = module.exports = function ReactWebpackGenerator(args, options, config) {
+var ReactRefluxWebpackGenerator = module.exports = function ReactRefluxWebpackGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.argument('appname', { type: String, required: false });
@@ -26,11 +26,11 @@ var ReactWebpackGenerator = module.exports = function ReactWebpackGenerator(args
   this.htmlPath = this.options.htmlPath;
   this.appPath = this.options.appPath;
 
-  this.composeWith('react-webpack:common', {
+  this.composeWith('react-reflux-webpack:common', {
     args: args
   });
 
-  this.composeWith('react-webpack:main', {
+  this.composeWith('react-reflux-webpack:main', {
     args: args
   });
 
@@ -44,9 +44,9 @@ var ReactWebpackGenerator = module.exports = function ReactWebpackGenerator(args
   this.config.save();
 };
 
-util.inherits(ReactWebpackGenerator, yeoman.generators.Base);
+util.inherits(ReactRefluxWebpackGenerator, yeoman.generators.Base);
 
-ReactWebpackGenerator.prototype.welcome = function welcome() {
+ReactRefluxWebpackGenerator.prototype.welcome = function welcome() {
   // welcome message
   if (!this.options['skip-welcome-message']) {
     console.log(this.yeoman);
@@ -56,7 +56,7 @@ ReactWebpackGenerator.prototype.welcome = function welcome() {
   }
 };
 
-ReactWebpackGenerator.prototype.askForReactRouter = function () {
+ReactRefluxWebpackGenerator.prototype.askForReactRouter = function () {
   var done = this.async();
   this.prompt({
     type    : 'confirm',
@@ -69,7 +69,7 @@ ReactWebpackGenerator.prototype.askForReactRouter = function () {
   }.bind(this));
 };
 
-ReactWebpackGenerator.prototype.askForImmutableJS = function () {
+ReactRefluxWebpackGenerator.prototype.askForImmutableJS = function () {
   var done = this.async();
   this.prompt({
     type    : 'confirm',
@@ -82,7 +82,21 @@ ReactWebpackGenerator.prototype.askForImmutableJS = function () {
   }.bind(this));
 };
 
-ReactWebpackGenerator.prototype.askForStylesLanguage = function () {
+ReactRefluxWebpackGenerator.prototype.askForSuperagent = function () {
+  var done = this.async();
+  this.prompt({
+    type    : 'confirm',
+    name    : 'superagent',
+    message : 'Would you like to include superagent (a HTTP lib)?',
+    default : true
+  }, function (props) {
+    this.env.options.superagent = props.superagent;
+    done();
+  }.bind(this));
+};
+
+
+ReactRefluxWebpackGenerator.prototype.askForStylesLanguage = function () {
   var done = this.async();
   this.prompt({
     type    : 'list',
@@ -103,19 +117,21 @@ ReactWebpackGenerator.prototype.askForStylesLanguage = function () {
   }.bind(this));
 };
 
-ReactWebpackGenerator.prototype.readIndex = function readIndex() {
+ReactRefluxWebpackGenerator.prototype.readIndex = function readIndex() {
   this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
 };
 
-ReactWebpackGenerator.prototype.createIndexHtml = function createIndexHtml() {
+ReactRefluxWebpackGenerator.prototype.createIndexHtml = function createIndexHtml() {
   this.indexFile = this.indexFile.replace(/&apos;/g, "'");
   this.write(path.join(this.htmlPath, 'index.html'), this.indexFile);
 };
 
-ReactWebpackGenerator.prototype.packageFiles = function () {
+ReactRefluxWebpackGenerator.prototype.packageFiles = function () {
   this.reactRouter = this.env.options.reactRouter;
   this.immutableJS = this.env.options.immutableJS;
   this.stylesLanguage = this.env.options.stylesLanguage;
+  this.superagent = this.env.options.superagent;
+
   this.template('../../templates/common/_package.json', 'package.json');
   this.template('../../templates/common/_webpack.config.js', 'webpack.config.js');
   this.template('../../templates/common/_webpack.dist.config.js', 'webpack.dist.config.js');
@@ -123,18 +139,18 @@ ReactWebpackGenerator.prototype.packageFiles = function () {
   this.copy('../../templates/common/gitignore', '.gitignore');
 };
 
-ReactWebpackGenerator.prototype.styleFiles = function styleFiles() {
+ReactRefluxWebpackGenerator.prototype.styleFiles = function styleFiles() {
   var mainFile = 'main.css';
   var normalizeFile = 'normalize.css';
   this.copy('styles/' + mainFile, 'src/styles/' + mainFile);
   this.copy('styles/' + normalizeFile, 'src/styles/' + normalizeFile);
 };
 
-ReactWebpackGenerator.prototype.imageFiles = function () {
+ReactRefluxWebpackGenerator.prototype.imageFiles = function () {
   this.sourceRoot(path.join(__dirname, 'templates'));
   this.directory('images', 'src/images', true);
 };
 
-ReactWebpackGenerator.prototype.karmaFiles = function () {
+ReactRefluxWebpackGenerator.prototype.karmaFiles = function () {
   this.copy('../../templates/common/karma.conf.js', 'karma.conf.js');
 };

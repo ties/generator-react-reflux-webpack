@@ -1,28 +1,24 @@
 {
-  "name": "generator-react-webpack",
+  "name": "generator-react-reflux-webpack",
   "version": "1.1.14",
-  "description": "Yeoman generator for ReactJS and Webpack",
+  "description": "Yeoman generator for ReactJS, RefluxJS and Webpack",
   "keywords": [
     "yeoman-generator",
     "reactjs",
     "webpack",
+    "refluxjs",
     "scaffold",
     "framework",
     "component",
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/newtriks/generator-react-webpack",
-  "bugs": "https://github.com/newtriks/generator-react-webpack/issues",
-  "author": {
-    "name": "Simon Bailey",
-    "email": "simon@newtriks.com",
-    "url": "https://github.com/newtriks"
-  },
+  "homepage": "https://github.com/ties/generator-react-reflux-webpack",
+  "bugs": "https://github.com/ties/generator-react-reflux-webpack/issues",
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/newtriks/generator-react-webpack.git"
+    "url": "git://github.com/ties/generator-react-reflux-webpack.git"
   },
   "scripts": {
     "test": "mocha"

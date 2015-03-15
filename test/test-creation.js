@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var _ = require('underscore.string');
 
-describe('react-webpack generator', function() {
+describe('react-webpack-reflux generator', function() {
   var react;
   var expected = [
     'src/favicon.ico',
@@ -37,7 +37,7 @@ describe('react-webpack generator', function() {
       if (err) {
         return done(err);
       }
-      react = helpers.createGenerator('react-webpack:app', deps, false, genOptions);
+      react = helpers.createGenerator('react-reflux-webpack:app', deps, false, genOptions);
       helpers.mockPrompt(react, mockPrompts);
 
       done();
@@ -177,7 +177,7 @@ describe('react-webpack generator', function() {
       var deps = [path.join('../..', generatorType)];
       genOptions.appPath = 'src/scripts'
 
-      var reactGenerator = helpers.createGenerator('react-webpack:' + generatorType, deps, [name], genOptions);
+      var reactGenerator = helpers.createGenerator('react-reflux-webpack:' + generatorType, deps, [name], genOptions);
 
       react.run([], function() {
         reactGenerator.run([], function() {
