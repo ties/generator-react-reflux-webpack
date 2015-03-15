@@ -5,8 +5,8 @@ import React from 'react/addons';
 const ReactTransitionGroup = React.addons.TransitionGroup;
 
 // CSS
-require('../../styles/normalize.css');
-require('../../styles/main.css');
+require('styles/normalize.css');
+require('styles/main.css');
 
 const imageURL = require('../../images/yeoman.png');
 
