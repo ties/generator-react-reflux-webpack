@@ -51,7 +51,7 @@ ReactWebpackGenerator.prototype.welcome = function welcome() {
   if (!this.options['skip-welcome-message']) {
     console.log(this.yeoman);
     console.log(
-      'Out of the box I include Webpack and some default React components.\n'
+      'Out of the box I include Webpack, Reflux, and some default React components.\n'
     );
   }
 };
@@ -65,6 +65,19 @@ ReactWebpackGenerator.prototype.askForReactRouter = function () {
     default : true
   }, function (props) {
     this.env.options.reactRouter = props.reactRouter;
+    done();
+  }.bind(this));
+};
+
+ReactWebpackGenerator.prototype.askForImmutableJS = function () {
+  var done = this.async();
+  this.prompt({
+    type    : 'confirm',
+    name    : 'immutableJS',
+    message : 'Would you like to include Immutable.js?',
+    default : true
+  }, function (props) {
+    this.env.options.immutableJS = props.immutableJS;
     done();
   }.bind(this));
 };
@@ -101,6 +114,7 @@ ReactWebpackGenerator.prototype.createIndexHtml = function createIndexHtml() {
 
 ReactWebpackGenerator.prototype.packageFiles = function () {
   this.reactRouter = this.env.options.reactRouter;
+  this.immutableJS = this.env.options.immutableJS;
   this.stylesLanguage = this.env.options.stylesLanguage;
   this.template('../../templates/common/_package.json', 'package.json');
   this.template('../../templates/common/_webpack.config.js', 'webpack.config.js');

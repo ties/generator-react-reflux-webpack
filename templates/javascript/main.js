@@ -1,10 +1,19 @@
 'use strict';
 
-import <%= scriptAppName %> from './<%= scriptAppName %>';
+// Import libraries first
 import React from 'react';
-import Router from 'react-router';
 
-const Route = Router.Route;
+// TODO: Is the correct way to import?
+import Router from 'react-router';
+import {Route} from 'react-router';
+
+// Re-usable application components
+// Make sure the stores are included
+import * as stores from "stores";
+
+// The components
+import <%= scriptAppName %> from './<%= scriptAppName %>';
+
 
 const content = document.getElementById('content');
 

@@ -1,13 +1,16 @@
-# generator-react-webpack [![Build Status](https://secure.travis-ci.org/newtriks/generator-react-webpack.png?branch=master)](https://travis-ci.org/newtriks/generator-react-webpack)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-react-reflux-webpack [![Build Status](https://travis-ci.org/ties/generator-react-reflux-webpack.svg?branch=master)](https://travis-ci.org/ties/generator-react-reflux-webpack/)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Yeoman generator for [ReactJS](http://facebook.github.io/react/) - lets you quickly set up a project including karma test runner and [Webpack](http://webpack.github.io/) module system.
 
+The project includes [RefluxJS](https://github.com/spoike/refluxjs) by default and [Immutable](https://github.com/facebook/immutable-js) is added if wanted.
+
+This project was forked from the [generator-react-webpack](https://github.com/newtriks/generator-react-webpack). And... it needs some cleaning up.
 
 ## Usage
 
-Install `generator-react-webpack`:
+Install `generator-react-reflux-webpack`:
 ```
-npm install -g generator-react-webpack
+npm install -g generator-react-reflux-webpack
 ```
 
 Make a new directory, and `cd` into it:
@@ -15,7 +18,7 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo react-webpack`, optionally passing an app name:
+Run `yo react-reflux-webpack`, optionally passing an app name:
 ```
 yo react-webpack [app-name]
 ```
@@ -120,6 +123,11 @@ project
       -components
         ComponentOne.js
         ComponentTwo.js
+      -actions
+        index.js
+      -stores
+        index.js
+        RouterStore.js
       main.js
     - styles
       main.css

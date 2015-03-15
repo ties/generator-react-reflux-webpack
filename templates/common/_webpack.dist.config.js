@@ -36,7 +36,9 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
     alias: {
       'styles': '../../../src/styles',
-      'components': '../../../src/scripts/components/'
+      'components': '../../../src/scripts/components/',
+      'actions': '../../../src/scripts/actions/',
+      'stores': '../../../src/scripts/stores/'
     }
   },
 
