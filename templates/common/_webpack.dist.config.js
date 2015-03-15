@@ -52,7 +52,7 @@ module.exports = {
     loaders: [{
       test: /\.js(x)?$/,
       exclude: /node_modules/,
-      loader: 'babel'
+      loader: 'babel-loader?experimental&optional=runtime'
     }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
