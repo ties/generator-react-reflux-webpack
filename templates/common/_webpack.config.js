@@ -46,7 +46,7 @@ module.exports = {
     loaders: [{
       test: /\.js(x)?$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel-loader?experimental&optional=runtime'
+      loader: 'react-hot!babel'
     },<% if (stylesLanguage === 'sass') { %> {
       test: /\.sass/,
       loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
