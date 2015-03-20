@@ -7,6 +7,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
 
@@ -35,10 +36,10 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      'styles': '../../../src/styles',
-      'components': '../../../src/scripts/components/',
-      'actions': '../../../src/scripts/actions/',
-      'stores': '../../../src/scripts/stores/'
+      'styles': path.join(__dirname, 'src/styles'),
+      'components': path.join(__dirname, 'src/scripts/components/'),
+      'actions': path.join(__dirname, 'src/scripts/actions/'),
+      'stores': path.join(__dirname, 'src/scripts/stores/')
     }
   },
 
