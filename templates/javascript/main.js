@@ -1,5 +1,8 @@
 'use strict';
 
+// Babel polyfills
+require("babel/polyfill");
+
 // Import libraries first
 import React from 'react';
 
