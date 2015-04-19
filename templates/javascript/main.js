@@ -17,9 +17,18 @@ import * as stores from "stores";
 // The components
 import <%= scriptAppName %> from './<%= scriptAppName %>';
 
-
 const content = document.getElementById('content');
 
+//
+// react-router is included. Use contextTypes if you want
+// to be able to use the router from a Component.
+// 
+// contextTypes: {
+//    router: React.PropTypes.func
+// },
+//
+// The params are stored in this.context.router.getCurrentParams()
+//
 const Routes = (
   <Route handler={<%= scriptAppName %>}>
     <Route name="/" handler={<%= scriptAppName %>}/>

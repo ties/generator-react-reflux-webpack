@@ -8,7 +8,7 @@ if (stylesLanguage === 'scss')   { %>require('styles/<%= classedFileName %>.scss
 if (stylesLanguage === 'less')   { %>require('styles/<%= classedFileName %>.less');<% } %><%
 if (stylesLanguage === 'stylus') { %>require('styles/<%= classedFileName %>.styl');<% } %>
 
-var <%= classedName %> = React.createClass({
+var <%= classedName %> = React.createClass({  
   render: function () {
     return (
         <div className="<%= classedName %>">
