@@ -1,5 +1,3 @@
-'use strict';
-
 import Reflux from 'reflux';
 
 import * as actions from "actions";
